@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Extraction des données
+Extraction des données depuis les url fournies vers des csv
 """
 
 def extract_foncier():
@@ -56,15 +56,9 @@ def extract_taux_change():
     reponse = requests.get(url)
     
     df_exchange_rates = pd.DataFrame(reponse.json())
-    
-    # Suppression des colonnes non necessaire
-    exchange_rates = df_exchange_rates[['date','rates']]
-    exchange_rates['monnaie'] = list(exchange_rates.index)
-    
-    taux = exchange_rates[['monnaie','rates','date']]
 
     # Conversion du dataframe en csv
-    taux.to_csv("C:/Users/utilisateur/Documents/csv/taux_de_change_base.csv", index = False)
+    df_exchange_rates.to_csv("C:/Users/utilisateur/Documents/csv/taux_de_change_base.csv", index = False)
     
     
 def main():
