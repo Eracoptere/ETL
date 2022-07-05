@@ -4,4 +4,4 @@ import pandas as pd
 url = "https://en.wikipedia.org/wiki/List_of_largest_banks"
 dfs = pd.read_html(url)
 df = dfs[3]
-print(df)
+df.to_csv('donnees_banque.csv')
