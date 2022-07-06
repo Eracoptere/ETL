@@ -16,12 +16,11 @@ def transform():
     df_foncier=pd.read_csv(fic, sep='|')
 
     #Colonne à supprimer
-    df_foncier=df_foncier[['Date mutation', 'Nature mutation', 'Valeur fonciere', 'No voie',
-                           'B/T/Q', 'Type de voie', 'Voie', 'Code postal', 'Commune', 'Type local',
-                           'Surface reelle bati', 'Nombre pieces principales', 'Surface terrain']]
+    df_foncier=df_foncier[["Date mutation","Nature mutation","Valeur fonciere","Code postal",
+    			   "Commune","Type local","Surface reelle bati","Nombre pieces principales","Surface terrain"]]
     
     #Liste des valeurs à convertir en float
-    int_list=["Valeur fonciere","No voie","Code postal","Surface reelle bati","Nombre pieces principales","Surface terrain"]
+    int_list=["Valeur fonciere","Code postal","Surface reelle bati","Nombre pieces principales","Surface terrain"]
 
     #Remplacement des virgules par des points pour la colonne "Valeurs fonciere"
     df_foncier['Valeur fonciere']=df_foncier['Valeur fonciere'].str.replace(',','.')
@@ -31,12 +30,12 @@ def transform():
     for colonne in int_list:
         df_foncier[colonne]=df_foncier[colonne].astype(float)
         
-        #Changement de format de date
-        df_foncier['Date mutation']=pd.to_datetime(df_foncier['Date mutation'])
+    #Changement de format de date
+    df_foncier['Date mutation']=pd.to_datetime(df_foncier['Date mutation'])
         
         
-        #Sauvegarde des données transformées 
-        df_foncier.to_csv(local_path_csv+"foncier_transformed.csv")
+    #Sauvegarde des données transformées 
+    df_foncier.to_csv(local_path_csv+"foncier_transformed.csv")
     
     
     
