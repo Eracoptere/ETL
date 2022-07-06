@@ -6,6 +6,7 @@ format plus lisible et exploitable
 
 def transform():
     import pandas as pd
+    import re
     local_path_csv='C:/Users/utilisateur/Documents/csv'
     
     ##Transformation du fichier contenant les informations foncières
@@ -36,19 +37,6 @@ def transform():
         
         #Sauvegarde des données transformées 
         df_foncier.to_csv(local_path_csv+"foncier_transformed.csv")
-        
-        
-        
-        
-    ##Transformation du fichier contenant les informations sur les banques
-    
-    #Déclaration d'une variable contenant les données
-    fic=local_path_csv+"/banque_base.csv"
-    df_banques=pd.read_csv(fic)
-    
-    #A faire
-    """code d'Eric"""
-    
     
     
     
@@ -67,3 +55,28 @@ def transform():
     # Conversion du dataframe en csv
     taux.to_csv("taux_de_change.csv", index = False)
     
+    
+    
+    ##Transformation du fichier contenant les informations sur les banques
+    
+    #Déclaration d'une variable contenant les données
+    fic=local_path_csv+"/banque_base.csv"
+    df_classement=pd.read_csv(fic)
+    
+    # Récupération du taux de change du dollar vers l'euro
+    tx_change_dollar_to_euros = df_exchange_rates['rates'][149]
+    
+    # Création nouvelle colonne avec $ convertis en €, ainsi que str en float
+    df_classement['market_cap_€'] = df_classement['Market cap(US$ billion)']
+    df_classement['market_cap_€'] = [re.split("\[",i)[0] for i in df_classement['market_cap_€']]
+    df_classement['market_cap_€'] = df_classement['market_cap_€'].astype(float)
+    for value in range(len(df_classement['market_cap_€'])):
+        df_classement['market_cap_€'][value] = df_classement['market_cap_€'][value]/tx_change_dollar_to_euros
+        df_classement['market_cap_€'][value] = round(df_classement['market_cap_€'][value], 2)
+    
+    # Suppression colonnes inutiles
+    df_classement = df_classement.drop(columns={'Market cap(US$ billion)', 'Unnamed: 0'})
+    
+    # Conversion du dataframe en csv
+    classement = df_classement
+    classement.to_csv("classement_banque.csv", index = False)
