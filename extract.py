@@ -24,7 +24,7 @@ def extract_foncier():
     #Extraction du csv et import des données
     foncier_csv_link=requests.get(source_foncier)
     
-    local_path_csv='C:/Users/utilisateur/Documents/csv'
+    local_path_csv='C:/Users/Ahmed/Documents/csv'
     os.makedirs(local_path_csv,exist_ok=True)
     
     foncier_csv=local_path_csv+('/foncier_base.csv')
@@ -44,7 +44,7 @@ def extract_bank():
     
     #Conversion en csv de la table qui nous interesse (market capitalization)
     df = dfs[3]
-    df.to_csv('C:/Users/utilisateur/Documents/csv/banque_base.csv')
+    df.to_csv('C:C:/Users/Ahmed/Documents/csv/banque_base.csv')
     
     
 def extract_taux_change():
@@ -58,7 +58,7 @@ def extract_taux_change():
     df_exchange_rates = pd.DataFrame(reponse.json())
 
     # Conversion du dataframe en csv
-    df_exchange_rates.to_csv("C:/Users/utilisateur/Documents/csv/taux_de_change_base.csv", index = False)
+    df_exchange_rates.to_csv("C:/Users/Ahmed/Documents/csv/taux_de_change_base.csv", index = True)
     
     
 def main():
