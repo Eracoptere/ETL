@@ -15,7 +15,7 @@ def transform():
     fic=local_path_csv+"/foncier_base.csv"
     df_foncier=pd.read_csv(fic, sep='|')
 
-    #Colonne à supprimer
+    #Colonne à garder
     df_foncier=df_foncier[["Date mutation","Nature mutation","Valeur fonciere","Code postal",
     			   "Commune","Type local","Surface reelle bati","Nombre pieces principales","Surface terrain"]]
    
