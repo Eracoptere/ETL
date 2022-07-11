@@ -74,10 +74,8 @@ def transform():
     
     # Conversion du dataframe en csv
     classement = df_classement
-<<<<<<< HEAD
+
     classement.to_csv(local_path_csv+"classement_banque_transformed.csv", index = False)
-=======
-    classement.to_csv("classement_banque.csv", index = False)
+
     
 transform()
->>>>>>> b80bbe7ed1e49b0f617bf6f339ab1f7ecda51b9c
