@@ -14,11 +14,7 @@ from sqlalchemy import Column, Integer, String
 import pandas as pd
 
 # Initialisation du moteur de connection à la base de données
-<<<<<<< HEAD
 engine = create_engine("mysql+pymysql://root:root@localhost:3306/banque_final",pool_size=10, max_overflow=20)
-=======
-engine = create_engine("mysql+pymysql://root:password@localhost:3306/banque",pool_size=10, max_overflow=20)
->>>>>>> 7cd4e70a5984aab484d3b8feee37b5c8a6c2ae84
 Base = declarative_base()
 
 # Creation de la structure des tables dans sqlalchemy
@@ -28,20 +24,17 @@ def load_taux() :
         __tablename__ = "taux"
         id = Column(Integer, primary_key = True)
         monnaie = Column(String(3))
-<<<<<<< HEAD
         rate = Column(String)
         date = Column(String)
         colonne_prop = column_property(monnaie + " " + rate + " " + date )
      
     # Chargement de la table taux temporaire
     df_taux = pd.read_csv("C:/Users/Ahmed/Documents/csv/taux_de_change_transformed.csv")
-=======
-        rate = Column(Float)
-        date = Column(Date)   
+    rate = Column(Float)
+    date = Column(Date)   
     
     # Chargement de la table taux
     df_taux = pd.read_csv("C:/Users/utilisateur/Documents/csv/taux_de_change.csv")
->>>>>>> 7cd4e70a5984aab484d3b8feee37b5c8a6c2ae84
     ligne_monnaie = list(df_taux['monnaie'])
     ligne_rate = list(df_taux['rates'])
     ligne_date = list(df_taux['date'])
@@ -61,8 +54,7 @@ def load_taux() :
         date = Column(String)  
         colonne_prop = column_property(monnaie + " " + rate + " " + date )
 
-    #load_taux_bis()
-    #load_taux_bis_final()
+
     # Insertion des lignes de la table taux temporaire qui changent dans la table taux final
     session = Session(engine)        
     clean_taux=session.query(Taux_final.colonne_prop)
@@ -100,13 +92,10 @@ def load_banque() :
         colonne_prop = column_property(rang + " " + nom + " " + market_cap )
         
     
-<<<<<<< HEAD
     # Chargement de la table banque temporaire
     df_classement = pd.read_csv("C:/Users/Ahmed/Documents/csv/classement_banque_transformed.csv")
-=======
     # Chargement de la table classement banque
     df_classement = pd.read_csv("C:/Users/utilisateur/Documents/csv/classement_banque.csv")
->>>>>>> 7cd4e70a5984aab484d3b8feee37b5c8a6c2ae84
     ligne_rang = list(df_classement['Rank'])
     ligne_nom = list(df_classement['Bank name'])
     ligne_market_cap = list(df_classement['market_cap_€'])
@@ -167,14 +156,11 @@ def load_foncieres() :
         surface_terrain = Column(String)
         colonne_prop = column_property(date_mutation + " " + nature_mutation + " " + valeur_fonciere + " " + code_postal + " " + commune + " " + type_local + " " + surface_reelle_batie + " " + nombre_pieces_principales + " " + surface_terrain)
         
-<<<<<<< HEAD
     # import des données de la table foncieres
     df_foncier = pd.read_csv("C:/Users/Ahmed/Documents/csv/foncier_transformed.csv")
     df_foncier = df_foncier.head(10)
-=======
     # Chargement de la table foncieres
     df_foncier = pd.read_csv("C:/Users/utilisateur/Documents/csv/foncier_transformed.csv")
->>>>>>> 7cd4e70a5984aab484d3b8feee37b5c8a6c2ae84
     
     
     # traitement des données manquantes

@@ -44,7 +44,7 @@ def extract_bank():
     
     #Conversion en csv de la table qui nous interesse (market capitalization)
     df = dfs[3]
-    df.to_csv('C:C:/Users/Ahmed/Documents/csv/banque_base.csv')
+    df.to_csv('C:/Users/Ahmed/Documents/csv/banque_base.csv')
     
     
 def extract_taux_change():
