@@ -41,7 +41,8 @@ def transform():
     
     # Suppression des colonnes non necessaire
     df_exchange_rates = df_exchange_rates[['date','rates']]
-    df_exchange_rates['monnaie'] = list(df_exchange_rates.index)
+    df_exchange_rates['monnaie']=df_exchange_rates.iloc[:,0]
+    #df_exchange_rates['monnaie'] = list(df_exchange_rates.index)
     #df_exchange_rates['monnaie'] = df_exchange_rates.iloc[:,0]
 
     taux = df_exchange_rates[['monnaie','rates','date']]
