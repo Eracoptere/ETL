@@ -61,9 +61,9 @@ def extract_taux_change():
     df_exchange_rates.to_csv("C:/Users/utilisateur/Documents/csv/taux_de_change_base.csv", index = False)
     
     
-def main():
+def extract():
     extract_foncier()
     extract_bank()
     extract_taux_change()
     
-main()
+extract()
