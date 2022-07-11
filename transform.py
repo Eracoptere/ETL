@@ -7,12 +7,12 @@ format plus lisible et exploitable
 def transform():
     import pandas as pd
     import re
-    local_path_csv='C:/Users/utilisateur/Documents/csv'
+    local_path_csv='C:/Users/Ahmed/Documents/csv/'
     
     ##Transformation du fichier contenant les informations foncières
     
     #Déclaration d'une variable contenant les données
-    fic=local_path_csv+"/foncier_base.csv"
+    fic=local_path_csv+"foncier_base.csv"
     df_foncier=pd.read_csv(fic, sep='|')
 
     #Colonne à garder
@@ -36,24 +36,25 @@ def transform():
     ##Transformation du fichier contenant les informations sur le taux de change
     
     #Déclaration d'une variable contenant les données
-    fic=local_path_csv+"/taux_de_change_base.csv"
+    fic=local_path_csv+"taux_de_change_base.csv"
     df_exchange_rates=pd.read_csv(fic)
     
     # Suppression des colonnes non necessaire
     df_exchange_rates = df_exchange_rates[['date','rates']]
     df_exchange_rates['monnaie'] = list(df_exchange_rates.index)
+    #df_exchange_rates['monnaie'] = df_exchange_rates.iloc[:,0]
 
     taux = df_exchange_rates[['monnaie','rates','date']]
 
     # Conversion du dataframe en csv
-    taux.to_csv("taux_de_change.csv", index = False)
+    taux.to_csv(local_path_csv+"taux_de_change_transformed.csv", index = False)
     
     
     
     ##Transformation du fichier contenant les informations sur les banques
     
     #Déclaration d'une variable contenant les données
-    fic=local_path_csv+"/banque_base.csv"
+    fic=local_path_csv+"banque_base.csv"
     df_classement=pd.read_csv(fic)
     
     # Récupération du taux de change du dollar vers l'euro
@@ -72,6 +73,10 @@ def transform():
     
     # Conversion du dataframe en csv
     classement = df_classement
+<<<<<<< HEAD
+    classement.to_csv(local_path_csv+"classement_banque_transformed.csv", index = False)
+=======
     classement.to_csv("classement_banque.csv", index = False)
     
 transform()
+>>>>>>> b80bbe7ed1e49b0f617bf6f339ab1f7ecda51b9c
