@@ -3,7 +3,7 @@
 """
 Created on Fri Jul  8 10:05:03 2022
 
-@author: Ahmed
+@author: utilisateur
 """
 # import des librairies utiles
 from sqlalchemy import create_engine
@@ -13,7 +13,7 @@ from sqlalchemy import Column, Integer, String, Float, Date
 import pandas as pd
 
 # Initialisation du moteur de connection à la base de données
-engine = create_engine("mysql+pymysql://root:root@localhost:3306/banque",pool_size=10, max_overflow=20)
+engine = create_engine("mysql+pymysql://root:password@localhost:3306/banque",pool_size=10, max_overflow=20)
 Base = declarative_base()
 
 # Creation de la structure des tables dans sqlalchemy
@@ -27,7 +27,7 @@ def load_taux() :
         date = Column(Date)   
     
     # Chargement de la table taux
-    df_taux = pd.read_csv("C:/Users/Ahmed/Documents/csv/taux_de_change_transformed.csv")
+    df_taux = pd.read_csv("C:/Users/utilisateur/Documents/csv/taux_de_change.csv")
     ligne_monnaie = list(df_taux['monnaie'])
     ligne_rate = list(df_taux['rates'])
     ligne_date = list(df_taux['date'])
@@ -51,7 +51,7 @@ def load_banque() :
         
     
     # Chargement de la table classement banque
-    df_classement = pd.read_csv("C:/Users/Ahmed/Documents/csv/classement_banque_transformed.csv")
+    df_classement = pd.read_csv("C:/Users/utilisateur/Documents/csv/classement_banque.csv")
     ligne_rang = list(df_classement['Rank'])
     ligne_nom = list(df_classement['Bank name'])
     ligne_market_cap = list(df_classement['market_cap_€'])
@@ -79,7 +79,7 @@ def load_foncieres() :
         surface_terrain = Column(String)
         
     # Chargement de la table foncieres
-    df_foncier = pd.read_csv("C:/Users/Ahmed/Documents/csv/foncier_transformed.csv")
+    df_foncier = pd.read_csv("C:/Users/utilisateur/Documents/csv/foncier_transformed.csv")
     
     df_foncier['Surface reelle bati'] = df_foncier['Surface reelle bati'].fillna('0.123456789')
     df_foncier['Valeur fonciere'] = df_foncier['Valeur fonciere'].fillna('0.123456789')
