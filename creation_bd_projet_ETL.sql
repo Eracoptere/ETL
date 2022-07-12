@@ -44,4 +44,3 @@ create table banque_final(id integer primary key auto_increment,
 	rang integer,
     nom varchar(50),
     market_cap float);
-
