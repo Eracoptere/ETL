@@ -3,6 +3,12 @@
 Extraction des données depuis les url fournies vers des csv
 """
 
+print("Début extract")
+
+import os
+local_path_csv='C:/Users/utilisateur/Documents/csv'
+os.makedirs(local_path_csv,exist_ok=True)
+
 def extract_foncier():
     
     """Extrait un csv depuis une url data.gouv les données foncières de l'année publiée la plus récente puis transforme les données brutes en
@@ -10,7 +16,6 @@ def extract_foncier():
 
     from bs4 import BeautifulSoup
     import requests
-    import os
     
     #url de la source de données 
     url_foncier="https://www.data.gouv.fr/fr/datasets/demandes-de-valeurs-foncieres/"
@@ -23,9 +28,7 @@ def extract_foncier():
     
     #Extraction du csv et import des données
     foncier_csv_link=requests.get(source_foncier)
-    
-    local_path_csv='C:/Users/Ahmed/Documents/csv'
-    os.makedirs(local_path_csv,exist_ok=True)
+   
     
     foncier_csv=local_path_csv+('/foncier_base.csv')
     with open(foncier_csv, "wb") as f:
@@ -44,7 +47,7 @@ def extract_bank():
     
     #Conversion en csv de la table qui nous interesse (market capitalization)
     df = dfs[3]
-    df.to_csv('C:/Users/Ahmed/Documents/csv/banque_base.csv')
+    df.to_csv(local_path_csv+"/banque_base.csv")
     
     
 def extract_taux_change():
@@ -58,7 +61,7 @@ def extract_taux_change():
     df_exchange_rates = pd.DataFrame(reponse.json())
 
     # Conversion du dataframe en csv
-    df_exchange_rates.to_csv("C:/Users/Ahmed/Documents/csv/taux_de_change_base.csv", index = True)
+    df_exchange_rates.to_csv(local_path_csv+"/taux_de_change_base.csv", index = True)
     
     
 def extract():
@@ -67,3 +70,4 @@ def extract():
     extract_taux_change()
     
 extract()
+print("extract ok")

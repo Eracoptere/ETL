@@ -3,11 +3,12 @@
 Transformation des csv pour ne conserver que les variables voulues dans un 
 format plus lisible et exploitable
 """
+print("Début transform")
 
 def transform():
     import pandas as pd
     import re
-    local_path_csv='C:/Users/Ahmed/Documents/csv/'
+    local_path_csv='C:/Users/utilisateur/Documents/csv/'
     
     ##Transformation du fichier contenant les informations foncières
     
@@ -40,11 +41,9 @@ def transform():
     df_exchange_rates=pd.read_csv(fic)
     
     # Suppression des colonnes non necessaire
+    monnaie=df_exchange_rates.iloc[:,0]
     df_exchange_rates = df_exchange_rates[['date','rates']]
-    df_exchange_rates['monnaie']=df_exchange_rates.iloc[:,0]
-    #df_exchange_rates['monnaie'] = list(df_exchange_rates.index)
-    #df_exchange_rates['monnaie'] = df_exchange_rates.iloc[:,0]
-
+    df_exchange_rates['monnaie']=monnaie
     taux = df_exchange_rates[['monnaie','rates','date']]
 
     # Conversion du dataframe en csv
@@ -79,3 +78,5 @@ def transform():
 
     
 transform()
+
+print("transform ok")
