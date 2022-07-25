@@ -6,6 +6,7 @@ Projet d'ETL pour une banque dans le but d'utiliser les données pour mettre au 
 1. [Introduction](#introduction)
 2. [Fichiers par fichiers](#fichiers_par_fichiers)
 3. [Automatisation](#automatisation)
+4. [Machine Learning](#machine)
 
 
 <a name="introduction"><h3>Introduction: </h3></a>
@@ -43,6 +44,12 @@ Lancer <i>load.py</i><br>
 <a name="automatisation"><h3>Automatisation: </h3></a>
 Pour automatiser l’ETL et qu’il s’exécute automatiquement tout les jours à 12h :<br>
 Lancer fichier main_ETL (pour les utilisateurs windows, bien exécuter une fois tout les autres fichiers séparément pour être sur qu'ils fonctionnent) et laisser le fichier tourner<br><br>
+
+
+<a name="machine"><h3>Machine Learning: </h3></a>
+Ouvrir le fichier <i>ml.ipynb</i> et utiliser le fichier csv disponible sur ce lien : https://drive.google.com/file/d/1-POHFycmWoyGVT1qUbp_GVp4fkxI1IeZ/view?usp=sharing
+<br>
+Le lr.score de la cellule Régression Linéaire correspond au r2. <br><br>
 Version des différents packages utilisés : <br>
 bs4 : 4.11.1<br>
 requests : 2.27.1<br>
