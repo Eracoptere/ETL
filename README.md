@@ -42,6 +42,12 @@ Lancer <i>load.py</i><br>
 
 <a name="automatisation"><h3>Automatisation: </h3></a>
 Pour automatiser l’ETL et qu’il s’exécute automatiquement tout les jours à 12h :<br>
-Lancer fichier main_ETL (bien l’exécuter une fois que tout les autres fichiers ont été exécutés séparément) et laisser le fichier tourné
-<br><br><br><br><br>
+Lancer fichier main_ETL (pour les utilisateurs windows, bien exécuter une fois tout les autres fichiers séparément pour être sur qu'ils fonctionnent) et laisser le fichier tourner<br><br>
+Version des différents packages utilisés : <br>
+bs4 : 4.11.1<br>
+requests : 2.27.1<br>
+pandas : 1.4.2<br>
+re : 2.2.1<br>
+sqlalchemy : 1.4.32<br>
+<br><br><br>
 Fait par Allan, Mohamed, Randolf et Eric
